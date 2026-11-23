@@ -16,7 +16,7 @@ export default function LoadingState({ label }) {
           return (
             <span
               key={i}
-              className="rounded-md"
+              className="rounded-[3px]"
               style={{
                 background: "var(--accent)",
                 animation: `siftPulse 1.35s ease-in-out ${delay}s infinite`,
@@ -25,7 +25,7 @@ export default function LoadingState({ label }) {
           );
         })}
       </div>
-      <p className="text-sm font-mono animate-pulse" style={{ color: "var(--ink-faint)" }}>
+      <p className="text-sm animate-pulse uppercase tracking-[0.16em]" style={{ color: "var(--ink-faint)" }}>
         {label}
       </p>
       <style>{`

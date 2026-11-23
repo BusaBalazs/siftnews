@@ -15,7 +15,7 @@ export default function ArticleCard({ a, lang, onOpen, liked, onToggleLike }) {
         <div className="article-card-copy">
           <h3><button onClick={() => onOpen(a)}>{a[lang].title}</button></h3>
           <p className="article-excerpt">{a[lang].excerpt}</p>
-          <div className="article-meta"><span>{a.siteName}</span>{publishedTime && <><span>·</span><span>{publishedTime}</span></>}</div>
+          <div className="article-meta"><span>{a.siteName}</span>{publishedTime && <><span>•</span><span>{publishedTime}</span></>}</div>
         </div>
       </div>
       <div className="article-actions">

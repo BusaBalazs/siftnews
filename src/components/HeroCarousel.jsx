@@ -16,9 +16,9 @@ function HeroCopy({ article, lang, t, onOpen, exiting = false, onExitEnd }) {
       <h1><button disabled={exiting} onClick={() => onOpen(article)}>{article[lang].title}</button></h1>
       <p className="hero-excerpt">{article[lang].excerpt}</p>
       <div className="hero-meta">
-        <span>{article.siteName}</span><span>·</span><span>{t.by} {article.author}</span>
-        {publishedTime && <><span>·</span><span>{publishedTime}</span></>}
-        <span>·</span><span>{t.score}: {article.score}</span>
+        <span>{article.siteName}</span><span>•</span><span>{t.by} {article.author}</span>
+        {publishedTime && <><span>•</span><span>{publishedTime}</span></>}
+        <span>•</span><span>{t.score}: {article.score}</span>
       </div>
       <button disabled={exiting} className="read-more" onClick={() => onOpen(article)}>{t.readMore} <ArrowRight size={17} /></button>
     </div>

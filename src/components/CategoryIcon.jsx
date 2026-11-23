@@ -1,28 +1,108 @@
 import React from "react";
 
+/**
+ * Category icons, drawn after the design mock-ups: a solid pediment building
+ * (Politics), an open book (Society) and an atom (Technology), plus a flask
+ * (Science), a briefcase (Business) and a ringed ellipsis (Other) in the same
+ * duotone line style. Colour comes from `currentColor`; size from CSS
+ * (or the width / height props).
+ */
+
+function Politics() {
+  return (
+    <>
+      <path d="M3 12.2 16 4.2l13 8z" fill="currentColor" fillOpacity=".85" />
+      <rect x="5" y="13.8" width="22" height="2" rx=".4" fill="currentColor" stroke="none" />
+      {[7, 11, 15, 19, 23].map((x) => (
+        <rect key={x} x={x} y="17.4" width="2" height="7.4" fill="currentColor" fillOpacity=".55" strokeWidth="1" />
+      ))}
+      <rect x="5" y="25.4" width="22" height="1.8" rx=".4" fill="currentColor" stroke="none" />
+      <rect x="3" y="28" width="26" height="1.8" rx=".4" fill="currentColor" stroke="none" />
+    </>
+  );
+}
+
+function Society() {
+  return (
+    <>
+      <path d="M3 7.5c4.6-1.5 9.2-1 12.2 1V25C12 23 7.5 22.8 3 24z" fill="currentColor" fillOpacity=".85" />
+      <path d="M29 7.5c-4.6-1.5-9.2-1-12.2 1V25c3.2-2 7.7-2.2 12.2-1z" fill="currentColor" fillOpacity=".85" />
+      <path d="M3 26.2c4.6-1 9.2-.4 13 1.8 3.8-2.2 8.4-2.8 13-1.8" />
+    </>
+  );
+}
+
+function Technology() {
+  return (
+    <>
+      <ellipse cx="16" cy="16" rx="12.5" ry="4.8" />
+      <ellipse cx="16" cy="16" rx="12.5" ry="4.8" transform="rotate(60 16 16)" />
+      <ellipse cx="16" cy="16" rx="12.5" ry="4.8" transform="rotate(120 16 16)" />
+      <circle cx="16" cy="16" r="2" fill="currentColor" stroke="none" />
+    </>
+  );
+}
+
+function Science() {
+  return (
+    <>
+      <path d="M12 4h8" />
+      <path d="M13.5 4v8.2L6.6 24.4A2.4 2.4 0 0 0 8.7 28h14.6a2.4 2.4 0 0 0 2.1-3.6L18.5 12.2V4" />
+      <path d="M9.4 19.6h13.2l2.8 4.8a2.4 2.4 0 0 1-2.1 3.6H8.7a2.4 2.4 0 0 1-2.1-3.6z" fill="currentColor" fillOpacity=".4" stroke="none" />
+      <circle cx="14.2" cy="23.4" r="1.1" fill="currentColor" stroke="none" />
+      <circle cx="18.6" cy="22" r=".9" fill="currentColor" stroke="none" />
+    </>
+  );
+}
+
+function Business() {
+  return (
+    <>
+      <rect x="4" y="10" width="24" height="16" rx="2.2" fill="currentColor" fillOpacity=".14" />
+      <path d="M12 10V8.2A2.2 2.2 0 0 1 14.2 6h3.6A2.2 2.2 0 0 1 20 8.2V10" />
+      <path d="M4 17h24" />
+      <rect x="14" y="15" width="4" height="4" rx=".8" fill="currentColor" stroke="none" />
+    </>
+  );
+}
+
+function Other() {
+  return (
+    <>
+      <circle cx="16" cy="16" r="11.5" fill="currentColor" fillOpacity=".1" />
+      <circle cx="10.8" cy="16" r="1.5" fill="currentColor" stroke="none" />
+      <circle cx="16" cy="16" r="1.5" fill="currentColor" stroke="none" />
+      <circle cx="21.2" cy="16" r="1.5" fill="currentColor" stroke="none" />
+    </>
+  );
+}
+
+const ICONS = { politics: Politics, society: Society, technology: Technology, science: Science, business: Business, other: Other };
+
+// existing / legacy DB values that reuse one of the six icons
+const ALIASES = { tech: "technology", cybersecurity: "technology", sport: "other", sports: "other" };
+
+export function iconKey(category) {
+  const key = String(category ?? "").trim().toLowerCase();
+  const resolved = ALIASES[key] ?? key;
+  return ICONS[resolved] ? resolved : "other";
+}
+
 export default function CategoryIcon({ category, ...props }) {
-  const name = (category || "").toLowerCase();
-  let shape;
-
-  switch (name) {
-    case "technology":
-      shape = <><rect x="6" y="6" width="12" height="12" rx="1.5" /><rect x="9" y="9" width="6" height="6" rx=".5" /><path d="M9 3v3m3-3v3m3-3v3M9 18v3m3-3v3m3-3v3M3 9h3m-3 3h3m-3 3h3m12-6h3m-3 3h3m-3 3h3" /></>;
-      break;
-    case "business":
-      shape = <g fill="currentColor" stroke="none"><rect x="3" y="15" width="2.8" height="6" rx=".4" /><rect x="8.2" y="10.5" width="2.8" height="10.5" rx=".4" /><rect x="13.4" y="6" width="2.8" height="15" rx=".4" /><rect x="18.6" y="3" width="2.8" height="18" rx=".4" /></g>;
-      break;
-    case "politics":
-      shape = <><polygon points="12,3 2,8.5 22,8.5" fill="currentColor" stroke="none" /><path d="M5 10.5v7m4.6-7v7m4.8-7v7m4.6-7v7" strokeWidth="2" /><path d="M3 19.5h18M1.8 21.5h20.4" /></>;
-      break;
-    case "science":
-      shape = <><circle cx="12" cy="12" r="1.7" fill="currentColor" stroke="none" /><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(-25 12 12)" /><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(35 12 12)" /><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(95 12 12)" /></>;
-      break;
-    case "society":
-      shape = <><circle cx="12" cy="12" r="9.5" /><ellipse cx="12" cy="12" rx="4.5" ry="9.5" /><path d="M12 2.5v19M2.5 12h19M4.3 7.2Q12 9.5 19.7 7.2M4.3 16.8Q12 14.5 19.7 16.8" /></>;
-      break;
-    default:
-      shape = <><path d="M3 6.5h18M3 12h12M3 17.5h15.5" strokeWidth="1.8" /><rect x="18" y="10.5" width="3" height="3" rx=".4" fill="currentColor" stroke="none" /></>;
-  }
-
-  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" {...props}>{shape}</svg>;
+  const Icon = ICONS[iconKey(category)];
+  return (
+    <svg
+      viewBox="0 0 32 32"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+    >
+      <Icon />
+    </svg>
+  );
 }

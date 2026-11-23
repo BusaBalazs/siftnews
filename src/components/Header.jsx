@@ -1,7 +1,6 @@
 import React from "react";
 import { Sun, Moon } from "lucide-react";
 import FxTicker from "./FxTicker";
-import CategoryIcon from "./CategoryIcon";
 import { categoryLabel } from "../lib/helpers";
 import { STRINGS } from "../i18n/strings";
 
@@ -34,7 +33,6 @@ export default function Header({ lang, setLang, theme, setTheme, categories, cat
         <nav className="category-nav" aria-label={t.categories}>
           {["all", ...categories].map((c) => (
             <button key={c} className={category === c ? "is-active" : ""} onClick={() => setCategory(c)} aria-pressed={category === c}>
-              <CategoryIcon category={c} />
               <span>{c === "all" ? t.all : categoryLabel(c, lang)}</span>
             </button>
           ))}

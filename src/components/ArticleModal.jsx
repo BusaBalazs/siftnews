@@ -11,7 +11,7 @@ import {
   Music2,
 } from "lucide-react";
 import LikeButton from "./LikeButton";
-import { relativeTime, scoreColor, categoryLabel } from "../lib/helpers";
+import { relativeTime, categoryLabel } from "../lib/helpers";
 
 const SHOW_SOCIAL_PREVIEW = false;
 
@@ -65,11 +65,11 @@ export default function ArticleModal({
   return (
     <div
       className="fixed inset-0 z-50 flex items-start md:items-center justify-center p-0 md:p-6"
-      style={{ background: "rgba(10,10,14,0.6)", backdropFilter: "blur(3px)" }}
+      style={{ background: "rgba(26,33,36,0.7)", backdropFilter: "blur(3px)" }}
       onClick={onClose}
     >
       <div
-        className="relative w-full md:max-w-2xl h-full md:h-[88vh] md:rounded-2xl overflow-hidden flex flex-col"
+        className="relative w-full md:max-w-2xl h-full md:h-[88vh] md:rounded-xl overflow-hidden flex flex-col"
         style={{ background: "var(--card)" }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -104,24 +104,24 @@ export default function ArticleModal({
           <div className="p-6 pt-16 relative">
             <div className="flex items-center gap-2 mb-3 flex-wrap">
               <span
-                className="px-2.5 py-1 rounded-full text-xs font-medium text-white"
+                className="px-2.5 py-1 rounded-sm text-xs font-bold uppercase tracking-wider font-grotesk"
                 style={{ background: "var(--button-bg)", color: "var(--button-ink)" }}
               >
                 {categoryLabel(a.category, lang)}
               </span>
               <span
-                className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-mono"
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded-sm text-xs"
                 style={{ background: "var(--badge-bg)", color: "var(--ink)" }}
               >
                 <span
                   className="w-1.5 h-1.5 rounded-full"
-                  style={{ background: scoreColor(a.score) }}
+                  style={{ background: "var(--accent)" }}
                 />
                 {t.score} {a.score}
               </span>
               {publishedTime && (
                 <span
-                  className="text-xs font-mono"
+                  className="text-xs"
                   style={{ color: "var(--ink-faint)" }}
                 >
                   {publishedTime}
@@ -138,13 +138,13 @@ export default function ArticleModal({
             </div>
 
             <h1
-              className="text-2xl font-semibold leading-tight mb-2 font-display"
+              className="text-3xl font-medium leading-tight mb-2 font-display"
               style={{ color: "var(--ink)" }}
             >
               {a[lang].title}
             </h1>
             <p
-              className="text-sm mb-5 font-mono"
+              className="text-sm mb-6"
               style={{ color: "var(--ink-faint)" }}
             >
               {a.siteName} · {t.by} {a.author}
@@ -183,15 +183,15 @@ export default function ArticleModal({
             </button>
             */}
 
-            <div className="flex flex-col gap-3 mb-5">
+            <div className="flex flex-col mb-5">
               {sections.map((s) => (
                 <div
                   key={s.label}
-                  className="rounded-xl p-4"
-                  style={{ background: "var(--badge-bg)" }}
+                  className="py-4"
+                  style={{ borderTop: "1px solid var(--border)" }}
                 >
                   <h2
-                    className="mb-1.5 text-[1.09375rem] font-semibold"
+                    className="mb-1.5 text-xs font-bold uppercase tracking-[0.1em]"
                     style={{ color: "var(--ink)" }}
                   >
                     {s.label}
@@ -210,9 +210,9 @@ export default function ArticleModal({
               {a.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-2.5 py-1 rounded-full text-xs font-mono"
+                  className="px-2.5 py-1 rounded-sm text-xs"
                   style={{
-                    background: "var(--badge-bg)",
+                    border: "1px solid var(--border)",
                     color: "var(--ink-muted)",
                   }}
                 >
@@ -226,14 +226,14 @@ export default function ArticleModal({
                 href={a.url}
                 target="_blank"
                 rel="noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 rounded-xl py-3 text-sm font-medium text-white"
+                className="flex-1 flex items-center justify-center gap-2 rounded-md py-3 text-sm font-bold uppercase tracking-wider"
                 style={{ background: "var(--button-bg)", color: "var(--button-ink)" }}
               >
                 {t.readOriginal} <ExternalLink size={14} />
               </a>
               <button
                 onClick={copySummary}
-                className="flex items-center justify-center gap-2 rounded-xl py-3 px-4 text-sm font-medium"
+                className="flex items-center justify-center gap-2 rounded-md py-3 px-4 text-sm font-bold uppercase tracking-wider"
                 style={{ background: "var(--badge-bg)", color: "var(--ink)" }}
               >
                 {copied ? <Check size={14} /> : <Copy size={14} />}{" "}

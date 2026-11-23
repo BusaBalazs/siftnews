@@ -10,7 +10,7 @@ export default function EmptyState({ title, subtitle }) {
       >
         <Newspaper size={22} style={{ color: "var(--ink-faint)" }} />
       </div>
-      <h3 className="text-lg font-semibold font-display" style={{ color: "var(--ink)" }}>
+      <h3 className="text-2xl font-medium font-display" style={{ color: "var(--ink)" }}>
         {title}
       </h3>
       <p className="text-sm max-w-sm" style={{ color: "var(--ink-muted)" }}>

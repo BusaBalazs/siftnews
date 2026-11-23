@@ -6,11 +6,11 @@ export default function PopularModal({ articles, lang, t, onOpen, onClose }) {
   return (
     <div
       className="fixed inset-0 z-50 flex items-end md:items-center justify-center"
-      style={{ background: "rgba(10,10,14,0.6)", backdropFilter: "blur(3px)" }}
+      style={{ background: "rgba(26,33,36,0.7)", backdropFilter: "blur(3px)" }}
       onClick={onClose}
     >
       <div
-        className="w-full md:max-w-md max-h-[75vh] rounded-t-2xl md:rounded-2xl overflow-hidden flex flex-col"
+        className="w-full md:max-w-md max-h-[75vh] rounded-t-xl md:rounded-xl overflow-hidden flex flex-col"
         style={{ background: "var(--card)" }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -18,7 +18,7 @@ export default function PopularModal({ articles, lang, t, onOpen, onClose }) {
           className="flex items-center justify-between px-4 py-3 shrink-0"
           style={{ borderBottom: "1px solid var(--border)" }}
         >
-          <h3 className="font-semibold font-display" style={{ color: "var(--ink)" }}>
+          <h3 className="font-bold uppercase tracking-wide text-[15px]" style={{ color: "var(--ink)" }}>
             {t.popularTitle}
           </h3>
           <button
@@ -30,7 +30,7 @@ export default function PopularModal({ articles, lang, t, onOpen, onClose }) {
             <X size={16} />
           </button>
         </div>
-        <div className="overflow-y-auto p-3 flex flex-col gap-1">
+        <div className="overflow-y-auto px-4 pb-2 flex flex-col">
           {articles.map((a) => (
             <PopularCard
               key={a.id ?? a.url + a.publishedAt}

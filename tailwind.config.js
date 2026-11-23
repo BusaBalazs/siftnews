@@ -5,17 +5,17 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ["'Playfair Display'", "serif"],
+        // Playfair Display — headlines and featured stories
+        display: ["'Playfair Display'", "Georgia", "serif"],
+        // DM Sans — navigation, body copy, labels
         body: ["'DM Sans'", "sans-serif"],
         mono: ["'DM Sans'", "sans-serif"],
+        // Space Grotesk — SIFTNEWS wordmark and category labels
+        grotesk: ["'Space Grotesk'", "'DM Sans'", "sans-serif"],
       },
+      // Palette (see src/index.css): grey #91A3B0, white #F5F5F5, black #2A3439
       colors: {
-        accent: "#6C5CE7",
-        signal: {
-          green: "#22C55E",
-          amber: "#F2A93B",
-          red: "#EF4444",
-        },
+        accent: "var(--accent)",
       },
     },
   },

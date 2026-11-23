@@ -190,3 +190,23 @@ intraday. EUR/USD is derived from the MNB's own HUF/EUR and HUF/USD fixings.
   figure against the MNB's own publication for that.
 - If a rate can't be loaded the ticker shows "—" (no hard-coded fallback) and
   logs a warning to the browser console.
+
+## Design
+
+Editorial look (light + dark), following the design mock-ups.
+
+- **Palette**: grey `#91A3B0`, white `#F5F5F5`, black `#2A3439`. All other
+  shades are tints/shades mixed from these (CSS variables in `src/index.css`,
+  `.dark` class switches the set). The hero card is dark in both themes.
+- **Fonts**: Playfair Display (headlines, featured stories), DM Sans
+  (navigation, body, labels), Space Grotesk (SIFTNEWS wordmark, category
+  labels) — loaded in `index.html`.
+- **Category icons** (`src/components/CategoryIcon.jsx`): inline SVG for
+  Politics, Society, Technology, Science, Business and Other; unknown
+  category values fall back to the Other icon.
+- **Layout**: desktop = header (date, FX rates, language, theme / wordmark +
+  category navigation), hero card with SN monogram, 3-column article grid with
+  hairline rules and the popular sidebar. Mobile = text category tabs, compact
+  hero card, single-column list, "Népszerű" opens the popular sheet.
+- The relevance score dial is monochrome (breakout stories >= 85 use the strong
+  ink colour); the like button fills with the ink colour when liked.

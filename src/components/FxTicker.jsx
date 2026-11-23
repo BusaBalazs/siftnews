@@ -82,11 +82,11 @@ export default function FxTicker({ lang }) {
 
   return (
     <div
-      className="flex items-center gap-3 md:gap-4 font-mono text-xs overflow-x-auto"
+      className="flex items-center gap-3 md:gap-4 text-[11.5px] tabular-nums overflow-x-auto whitespace-nowrap"
       style={{ color: "var(--ink-muted)" }}
       title={date ? `${t.fxTitle} · ${date}` : t.fxTitle}
     >
-      <span className="hidden sm:inline text-[10px] uppercase tracking-wider" style={{ color: "var(--ink-faint)" }}>
+      <span className="text-[10px] font-semibold uppercase tracking-[0.14em]" style={{ color: "var(--ink-faint)" }}>
         MNB
       </span>
       {PAIRS.map((p) => (

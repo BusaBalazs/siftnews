@@ -88,8 +88,8 @@ export default function AudioPlayer({ src, lang }) {
       aria-label={t.listen}
       // clicks inside the player must not open the article modal
       onClick={(e) => e.stopPropagation()}
-      className="flex items-center gap-2 rounded-xl px-2 py-1.5"
-      style={{ background: "var(--badge-bg)" }}
+      className="flex items-center gap-2 rounded-md px-2 py-1.5"
+      style={{ border: "1px solid var(--border)" }}
     >
       <audio
         ref={audioRef}
@@ -107,7 +107,7 @@ export default function AudioPlayer({ src, lang }) {
 
       {status === "error" ? (
         <>
-          <span className="flex-1 text-[11px] font-mono truncate" style={{ color: "var(--ink-muted)" }}>
+          <span className="flex-1 text-[11px]  truncate" style={{ color: "var(--ink-muted)" }}>
             {t.audioError}
           </span>
           <button
@@ -151,7 +151,7 @@ export default function AudioPlayer({ src, lang }) {
             style={{ "--fill": `${progressPct}%` }}
           />
 
-          <span className="text-[11px] font-mono tabular-nums shrink-0" style={{ color: "var(--ink-faint)" }}>
+          <span className="text-[11px]  tabular-nums shrink-0" style={{ color: "var(--ink-faint)" }}>
             {duration ? `${formatTime(current)} / ${formatTime(duration)}` : formatTime(current)}
           </span>
 
@@ -168,7 +168,7 @@ export default function AudioPlayer({ src, lang }) {
             </button>
             <div className="absolute bottom-full right-0 pb-2 hidden group-hover:block group-focus-within:block z-10">
               <div
-                className="w-28 rounded-xl px-3 py-2.5 shadow-lg"
+                className="w-28 rounded-md px-3 py-2.5 shadow-lg"
                 style={{ background: "var(--card)", border: "1px solid var(--border)" }}
               >
                 <input

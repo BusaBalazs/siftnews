@@ -144,20 +144,20 @@ export default function App() {
                   t={t}
                   onOpen={setActive}
                 />
-                <div className="feed-sort">
-                  <label htmlFor="article-sort">{t.sortLabel}</label>
-                  <select
-                    id="article-sort"
-                    value={sortBy}
-                    onChange={(event) => setSortBy(event.target.value)}
-                  >
-                    <option value="latest">{t.sortLatest}</option>
-                    <option value="score">{t.sortScore}</option>
-                  </select>
-                </div>
                 <div className="feed-heading section-heading">
                   <h2>{sortBy === "latest" ? t.trending : t.scoreHeading}</h2>
                   <div />
+                  <div className="feed-sort">
+                    <label htmlFor="article-sort">{t.sortLabel}</label>
+                    <select
+                      id="article-sort"
+                      value={sortBy}
+                      onChange={(event) => setSortBy(event.target.value)}
+                    >
+                      <option value="latest">{t.sortLatest}</option>
+                      <option value="score">{t.sortScore}</option>
+                    </select>
+                  </div>
                   <button
                     className="popular-mobile-button"
                     onClick={() => setPopularOpen(true)}
